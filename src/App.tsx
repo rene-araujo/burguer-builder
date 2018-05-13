@@ -1,19 +1,20 @@
 import * as React from 'react';
 import * as styles from './App.css';
-
-const logo = require('./logo.svg');
+import Layout from './components/Layout/Layout';
+import logo from './logo.svg';
 
 class App extends React.Component {
-  render() {
+  public render() {
     return (
       <div className={styles.app}>
-        <div className={styles.appHeader}>
+        <header className={styles.appHeader}>
           <img src={logo} className={styles.appLogo} alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
+          <h1 className={styles.appTitle}>Welcome to React</h1>
+        </header>
         <p className={styles.appIntro}>
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <Layout><h2>Ola</h2></Layout>
       </div>
     );
   }
