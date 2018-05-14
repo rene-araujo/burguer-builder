@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as classes from './Layout.css';
 
 interface IProps {
     children: any;
@@ -7,7 +8,7 @@ interface IProps {
 const layout = (props: IProps) =>
     <>
         <div>Toolbar, Sidebar, Backdrop</div>
-        <main>
+        <main className={classes.Content}>
             {props.children}
         </main>
     </>
