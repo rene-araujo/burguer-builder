@@ -6,8 +6,10 @@ interface IProps {
 
 const layout = (props: IProps) =>
     <>
-        <h1>Hi</h1>
-        {props.children}
+        <div>Toolbar, Sidebar, Backdrop</div>
+        <main>
+            {props.children}
+        </main>
     </>
 
 export default layout;
