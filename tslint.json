@@ -11,6 +11,8 @@
     ]
   },
   "rules": {
-    "jsx-self-close": false
+    "jsx-self-close": false,
+    "no-console": false
+
   }
 }
