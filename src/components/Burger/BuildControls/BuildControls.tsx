@@ -15,6 +15,7 @@ interface IProps {
     disabled: object;
     price: number;
     purchasable: boolean;
+    purchaseHandler: () => void;
 }
 
 const buildControls = (props: IProps) => {
@@ -32,7 +33,10 @@ const buildControls = (props: IProps) => {
                     added={onIngredientAdded(ctrl.type)}
                     removed={onIngredientRemoved(ctrl.type)}
                     disabled={props.disabled[ctrl.type]} />))}
-            <button className={classes.OrderButton} disabled={!props.purchasable}>ORDERM NOW</button>
+            <button
+                className={classes.OrderButton}
+                disabled={!props.purchasable}
+                onClick={props.purchaseHandler}>ORDERM NOW</button>
         </div>
 
     )
