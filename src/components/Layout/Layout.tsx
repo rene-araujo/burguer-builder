@@ -1,16 +1,34 @@
 import * as React from 'react';
+import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
+import Toolbar from '../Navigation/Toolbar/Toolbar';
 import * as classes from './Layout.css';
+
 
 interface IProps {
     children: any;
 }
 
-const layout = (props: IProps) =>
-    <>
-        <div>Toolbar, Sidebar, Backdrop</div>
-        <main className={classes.Content}>
-            {props.children}
-        </main>
-    </>
+class Layout extends React.Component<IProps> {
+    public state = {
+        showSideDrawer: true
+    }
 
-export default layout;
+    public sideDrawerClosedHandler = () => {
+        this.setState({ showSideDrawer: false });
+    }
+
+    public render() {
+        return (
+            <>
+                <Toolbar />
+                <SideDrawer open={this.state.showSideDrawer} toogleBackdropHandler={this.sideDrawerClosedHandler} />
+                <main className={classes.Content}>
+                    {this.props.children}
+                </main>
+            </>
+        );
+    }
+
+}
+
+export default Layout;
