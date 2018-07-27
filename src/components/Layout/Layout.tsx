@@ -8,19 +8,29 @@ interface IProps {
     children: any;
 }
 
-class Layout extends React.Component<IProps> {
+interface IState {
+    showSideDrawer: boolean;
+}
+
+class Layout extends React.Component<IProps, IState> {
     public state = {
-        showSideDrawer: true
+        showSideDrawer: false
     }
 
     public sideDrawerClosedHandler = () => {
         this.setState({ showSideDrawer: false });
     }
 
+    public toogleSideDrawerHandler = () => {
+        this.setState((prevState) => {
+            return { showSideDrawer: !prevState.showSideDrawer };
+        });
+    }
+
     public render() {
         return (
             <>
-                <Toolbar />
+                <Toolbar toogleSideDrawer={this.toogleSideDrawerHandler} />
                 <SideDrawer open={this.state.showSideDrawer} toogleBackdropHandler={this.sideDrawerClosedHandler} />
                 <main className={classes.Content}>
                     {this.props.children}

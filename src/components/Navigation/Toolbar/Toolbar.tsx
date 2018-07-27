@@ -1,11 +1,17 @@
 import * as React from 'react';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
+import DrawerToogle from '../SideDrawer/DrawerToogle/DrawerToogle';
 import * as classes from '../Toolbar/Toolbar.css';
 
-const toolbar = () => (
+
+interface IProps {
+    toogleSideDrawer: () => void;
+}
+
+const toolbar = (props: IProps) => (
     <header className={classes.Toolbar}>
-        <div>MENU</div>
+        <DrawerToogle toogleSideDrawer={props.toogleSideDrawer} />
         <div className={classes.Logo}>
             <Logo />
         </div>
