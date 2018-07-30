@@ -8,19 +8,33 @@ interface IProps {
     modalClosed: () => void;
 }
 
-const modal = (props: IProps) => (
-    <>
-        <Backdrop show={props.show} toogleBackdrop={props.modalClosed} />
-        <div
-            className={classes.Modal}
-            style={{
-                transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
-                opacity: props.show ? 1 : 0
-            }}
-        >
-            {props.children}
-        </div>
-    </>
-);
+class Modal extends React.Component<IProps>{
 
-export default modal;
+    public shouldComponentUpdate(nextProps: IProps) {
+        return nextProps.show !== this.props.show;
+    }
+
+    public componentWillUpdate() {
+        console.log('[Modal] WillUpdate');
+    }
+
+    public render() {
+        return (
+            <>
+                <Backdrop show={this.props.show} toogleBackdrop={this.props.modalClosed} />
+                <div
+                    className={classes.Modal}
+                    style={{
+                        transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
+                        opacity: this.props.show ? 1 : 0
+                    }}
+                >
+                    {this.props.children}
+                </div>
+            </>
+        )
+    }
+}
+
+
+export default Modal;
